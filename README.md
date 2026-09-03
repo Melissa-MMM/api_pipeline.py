@@ -1,36 +1,13 @@
-# API Data Pipeline
+# Currency Exchange Rate Data Pipeline (ETL)
 
-## Business Problem
-Businesses rely on external APIs to collect real-time or updated data for decision-making. This project automates the process of extracting, transforming, and preparing API data for analysis.
+An automated Python-driven ETL (Extract, Transform, Load) pipeline designed to extract real-time foreign currency exchange rates, structure the data, and store it in a local SQLite database for historical tracking.
 
-## Tools Used
-- Python
-- Requests
-- Pandas
-- (Optional SQL if used)
+## Pipeline Architecture
+1. **Extract:** Fetches live exchange rate JSON data from the Exchange Rate API using Python's `requests` library.
+2. **Transform:** Extracts target currencies (USD, EUR, GBP, ZAR), handles null safety, formats data into a Pandas DataFrame, and attaches execution timestamps.
+3. **Load:** Automatically initializes/connects to a local SQLite database (`api_pipeline.db`) and appends clean records into an `exchange_rates` table.
 
-## Pipeline Flow
-API → Extract → Transform → Clean Dataset → Output (CSV/SQL)
-
-## Project Steps
-- Connect to external API
-- Extract raw JSON data
-- Transform and clean dataset
-- Structure data for analytics use
-- Save output for reporting
-
-## Business Value
-- Automates manual data collection
-- Enables faster reporting
-- Reduces operational workload
-- Supports data-driven decision-making
-
-## Skills Demonstrated
-- API integration
-- Data extraction
-- ETL pipeline design
-- Data cleaning (Python)
-- Data structuring for analytics
-- 
-## API 
-url = (["https://api.exchangerate.host/latest?base=EUR"])
+## Tech Stack
+* **Language:** Python
+* **Libraries:** Pandas, Requests, SQLite3, Datetime
+* **Database:** SQLite
